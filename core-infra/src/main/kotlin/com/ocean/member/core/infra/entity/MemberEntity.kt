@@ -14,14 +14,14 @@ class MemberEntity(
     var id: Long? = null,
 
     @Column(nullable = false, unique = true, length = 255)
-    var email: String,
+    var email: String = "",
 
     @Column(nullable = false, length = 100)
-    var name: String,
+    var name: String = "",
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    var status: MemberStatus,
+    var status: MemberStatus = MemberStatus.ACTIVE,
 
     @Column(nullable = false, name = "created_at")
     var createdAt: LocalDateTime? = null,
