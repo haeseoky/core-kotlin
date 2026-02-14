@@ -2,6 +2,7 @@ plugins {
     id("java-library")
     kotlin("jvm") version "2.1.0"
     id("io.spring.dependency-management") version "1.1.7"
+    kotlin("plugin.spring")
 }
 
 java {
@@ -31,6 +32,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.assertj:assertj-core")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.testcontainers:testcontainers")
+    testImplementation("org.testcontainers:postgresql")
 }
 
 tasks.withType<Test> {
