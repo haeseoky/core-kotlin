@@ -1,5 +1,8 @@
 package com.ocean.member.core.infra.entity
 
+import com.ocean.member.core.domain.model.Member
+import com.ocean.member.core.domain.model.valueobject.Email
+import com.ocean.member.core.domain.model.valueobject.MemberStatus
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -18,7 +21,7 @@ class MemberEntity(
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    var status: com.ocean.member.core.domain.model.valueobject.MemberStatus,
+    var status: MemberStatus,
 
     @Column(nullable = false, name = "created_at")
     var createdAt: LocalDateTime,
@@ -29,6 +32,7 @@ class MemberEntity(
     @Column(name = "deleted_at")
     var deletedAt: LocalDateTime? = null
 ) {
+
     @PrePersist
     fun prePersist() {
         val now = LocalDateTime.now()
@@ -41,15 +45,31 @@ class MemberEntity(
         updatedAt = LocalDateTime.now()
     }
 
-    fun toDomain(): com.ocean.member.core.domain.model.Member {
-        return com.ocean.member.core.domain.model.Member.restore(
-            id = id ?: throw IllegalStateException("ID cannot be null"),
-            email = com.ocean.member.core.domain.model.valueobject.Email.of(email),
+    fun toId(): Long = id ?: throw IllegalStateException("ID cannot be null")
+
+    fun toDomain(): Member {
+        return Member.restore(
+            id = toId(),
+            email = Email.of(email),
             name = name,
             status = status,
             createdAt = createdAt,
             updatedAt = updatedAt,
             deletedAt = deletedAt
         )
+    }
+
+    companion object {
+        fun fromDomain(member: Member): MemberEntity {
+            return MemberEntity(
+                id = member.id.value(),
+                email = member.email.value,
+                name = member.name,
+                status = member.status,
+                createdAt = member.createdAt,
+                updatedAt = member.updatedAt,
+                deletedAt = member.deletedAt
+            )
+        }
     }
 }

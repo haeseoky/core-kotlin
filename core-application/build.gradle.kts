@@ -2,6 +2,7 @@ plugins {
     id("java-library")
     kotlin("jvm") version "2.1.0"
     id("io.spring.dependency-management") version "1.1.7"
+    kotlin("plugin.spring")
 }
 
 java {

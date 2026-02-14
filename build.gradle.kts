@@ -3,6 +3,7 @@ plugins {
     kotlin("jvm") version "2.1.0"
     id("org.springframework.boot") version "3.3.1"
     id("io.spring.dependency-management") version "1.1.7"
+    kotlin("plugin.spring") version "2.1.0"
 }
 
 group = "com.ocean.member"
@@ -10,7 +11,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
@@ -36,12 +37,19 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation(kotlin("stdlib"))
 }
 
 kotlin {
     compilerOptions {
-        freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
+        freeCompilerArgs.add("-Xjsr305=strict")
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_23
     }
+}
+
+tasks.withType<JavaCompile> {
+    sourceCompatibility = "23"
+    targetCompatibility = "23"
 }
 
 
