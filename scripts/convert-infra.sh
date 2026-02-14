@@ -1,0 +1,43 @@
+#!/bin/bash
+# IntelliJ 자동 변환 가이드 스크립트
+
+echo "================================================"
+echo "IntelliJ 자동 변환 가이드"
+echo "================================================"
+echo ""
+echo "이 스크립트는 IntelliJ IDEA의 자동 변환 기능을 사용하여 Java를 Kotlin로 변환합니다."
+echo ""
+
+JAVA_PROJECT="/Users/haeseoky/workspace/2026/core"
+KOTLIN_PROJECT="/Users/haeseoky/workspace/2026/core-kotlin"
+
+echo "Java 프로젝트: $JAVA_PROJECT"
+echo "Kotlin 프로젝트: $KOTLIN_PROJECT"
+echo ""
+
+echo "단계:"
+echo ""
+echo "1. IntelliJ IDEA에서 Java 프로젝트 열기"
+echo "   파일 → Open → 'Recent Projects' → 'core' 선택"
+echo ""
+echo "2. Project 도구 창에서 'Java to Kotlin' 변환 실행"
+echo "   코드 → Convert Java to Kotlin File"
+echo ""
+echo "3. 변환할 파일/패키지 선택"
+echo "   인프라 계층 변환:"
+echo "   - core-infra/src/main/java/com/ocean/member/core/infra/entity/MemberEntity.java"
+echo "   - core-infra/src/main/java/com/ocean/member/core/infra/persistence/MemberRepositoryImpl.java"
+echo "   - (선택사항) 도메인 계층도 변환 가능"
+echo ""
+echo "4. 변환 확인 및 테스트"
+echo ""
+echo "참고:"
+echo "- IntelliJ는 자동으로 import 문을 변환하고 Kotlin 관용사 적용"
+echo "- 복잡한 매핑 로직은 자동으로 data class로 변환될 수 있음"
+echo "- 변환 후 빌드 확인: ./gradlew build"
+echo ""
+
+echo "================================================"
+echo "위 단계를 완료한 후 다음 명령어로 빌드 확인:"
+echo "cd $KOTLIN_PROJECT && ./gradlew build"
+echo "================================================"
