@@ -24,6 +24,7 @@ dependencyManagement {
 dependencies {
     api(project(":core-domain"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("jakarta.persistence:jakarta.persistence-api")
     implementation("jakarta.validation:jakarta.validation-api")
