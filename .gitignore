@@ -1,8 +1,10 @@
 # Gradle
-gradle.properties
 .gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
+
+# Gradle properties - local only
+# gradle.properties.local
 
 # IDE
 .idea/
