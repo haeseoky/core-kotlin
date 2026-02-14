@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 import java.util.Optional
 
 @Repository
-open class MemberRepositoryAdapter(
+class MemberRepositoryAdapter(
     private val jpaRepository: MemberJpaRepository
 ) : MemberRepository {
 
