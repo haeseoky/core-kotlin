@@ -24,10 +24,10 @@ class MemberEntity(
     var status: MemberStatus,
 
     @Column(nullable = false, name = "created_at")
-    var createdAt: LocalDateTime,
+    var createdAt: LocalDateTime? = null,
 
     @Column(nullable = false, name = "updated_at")
-    var updatedAt: LocalDateTime,
+    var updatedAt: LocalDateTime? = null,
 
     @Column(name = "deleted_at")
     var deletedAt: LocalDateTime? = null
@@ -36,8 +36,8 @@ class MemberEntity(
     @PrePersist
     fun prePersist() {
         val now = LocalDateTime.now()
-        createdAt = now
-        updatedAt = now
+        if (createdAt == null) createdAt = now
+        if (updatedAt == null) updatedAt = now
     }
 
     @PreUpdate
@@ -53,8 +53,8 @@ class MemberEntity(
             email = Email.of(email),
             name = name,
             status = status,
-            createdAt = createdAt,
-            updatedAt = updatedAt,
+            createdAt = createdAt ?: LocalDateTime.now(),
+            updatedAt = updatedAt ?: LocalDateTime.now(),
             deletedAt = deletedAt
         )
     }
