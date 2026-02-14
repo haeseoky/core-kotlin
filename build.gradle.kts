@@ -11,7 +11,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -43,13 +43,13 @@ dependencies {
 kotlin {
     compilerOptions {
         freeCompilerArgs.add("-Xjsr305=strict")
-        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_23
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
     }
 }
 
 tasks.withType<JavaCompile> {
-    sourceCompatibility = "23"
-    targetCompatibility = "23"
+    sourceCompatibility = "21"
+    targetCompatibility = "21"
 }
 
 
