@@ -15,7 +15,7 @@ class MemberCommandService(
     fun createMember(email: String, name: String): Member {
         val validatedEmail = Email.of(email)
 
-        require(!memberRepository.existsByEmail(validatedEmail.value())) {
+        require(!memberRepository.existsByEmail(validatedEmail.value)) {
             "Member with email '$email' already exists"
         }
 

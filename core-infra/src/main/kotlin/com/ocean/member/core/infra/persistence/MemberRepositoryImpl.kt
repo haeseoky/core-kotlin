@@ -31,14 +31,14 @@ interface MemberRepositoryImpl : org.springframework.data.jpa.repository.JpaRepo
         }
     }
     private fun toEntity(member: Member): MemberEntity {
-        return MemberEntity().apply {
-            id = member.getIdValue()
-            email = member.email.value()
-            name = member.name
-            status = member.status
-            createdAt = member.createdAt
-            updatedAt = member.updatedAt
+        return MemberEntity(
+            id = member.getIdValue(),
+            email = member.email.value,
+            name = member.name,
+            status = member.status,
+            createdAt = member.createdAt,
+            updatedAt = member.updatedAt,
             deletedAt = member.deletedAt
-        }
+        )
     }
 }

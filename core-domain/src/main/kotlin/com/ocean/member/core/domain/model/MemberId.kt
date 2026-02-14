@@ -7,6 +7,7 @@ value class MemberId(private val value: Long) {
     companion object {
         private val counter = AtomicLong(System.currentTimeMillis())
         fun generate(): MemberId = MemberId(counter.incrementAndGet())
+        fun of(value: Long): MemberId = MemberId(value)
     }
     fun value(): Long = value
 }

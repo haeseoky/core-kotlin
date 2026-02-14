@@ -61,7 +61,7 @@ class MemberController(
 fun com.ocean.member.core.domain.model.Member.toResponse(): MemberResponse {
     return MemberResponse(
         id = getIdValue(),
-        email = email.value(),
+        email = email.value,
         name = name,
         status = status,
         createdAt = createdAt.toString(),

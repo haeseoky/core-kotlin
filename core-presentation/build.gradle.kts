@@ -1,6 +1,7 @@
 plugins {
-    id("java")
+    id("java-library")
     kotlin("jvm") version "2.1.0"
+    id("io.spring.dependency-management") version "1.1.7"
 }
 
 java {
@@ -13,7 +14,23 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.boot:spring-boot-dependencies:3.3.1")
+    }
+}
+
 dependencies {
-    implementation(project(":core-application"))
+    api(project(":core-application"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.assertj:assertj-core")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

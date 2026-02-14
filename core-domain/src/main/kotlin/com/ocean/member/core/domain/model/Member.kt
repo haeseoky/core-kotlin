@@ -12,7 +12,7 @@ class Member(
     var status: MemberStatus,
     val createdAt: LocalDateTime,
     var updatedAt: LocalDateTime,
-    val deletedAt: LocalDateTime?
+    var deletedAt: LocalDateTime?
 ) {
 
     companion object {

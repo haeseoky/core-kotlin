@@ -41,7 +41,7 @@ class MemberEntity(
         updatedAt = LocalDateTime.now()
     }
 
-    fun toDomain(): Member {
+    fun toDomain(): com.ocean.member.core.domain.model.Member {
         return com.ocean.member.core.domain.model.Member.restore(
             id = id ?: throw IllegalStateException("ID cannot be null"),
             email = com.ocean.member.core.domain.model.valueobject.Email.of(email),
