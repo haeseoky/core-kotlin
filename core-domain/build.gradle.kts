@@ -1,7 +1,10 @@
 plugins {
-    id("java")
-    kotlin("jvm") version "2.1.0"
+    id("java-library")
+    kotlin("jvm")
 }
+
+group = "com.ocean.member"
+version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
@@ -14,5 +17,11 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.3")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.assertj:assertj-core:3.25.3")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
