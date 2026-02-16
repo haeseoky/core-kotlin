@@ -17,7 +17,10 @@ import org.springframework.transaction.annotation.Transactional
 @TestPropertySource(properties = [
     "spring.datasource.url=jdbc:h2:mem:testdb",
     "spring.datasource.driver-class-name=org.h2.Driver",
-    "spring.jpa.hibernate.ddl-auto=create-drop"
+    "spring.jpa.hibernate.ddl-auto=create-drop",
+    "infra.redis.enabled=false",
+    "infra.kafka.enabled=false",
+    "infra.mongo.enabled=false"
 ])
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Transactional
