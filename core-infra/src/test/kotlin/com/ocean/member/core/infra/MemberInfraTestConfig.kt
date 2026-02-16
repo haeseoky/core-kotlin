@@ -27,7 +27,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
     excludeFilters = [
         ComponentScan.Filter(
             type = FilterType.REGEX,
-            pattern = [".*\\.config\\..*", ".*\\.mongo\\..*", ".*\\.redis\\..*", ".*\\.kafka\\..*"]
+            pattern = [".*\\.config\\..*", ".*\\.mongo\\..*", ".*\\.redis\\..*", ".*\\.kafka\\..*", ".*\\.adapter\\..*"]
         )
     ]
 )
